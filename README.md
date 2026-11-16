@@ -24,6 +24,18 @@ server/support.js  sendToSupport(): what happens to a contact form submission
 data/              Local contact form submissions (git-ignored)
 ```
 
+The site serves Inter regular and bold from `public/fonts/`. They are from the
+[Inter project](https://github.com/rsms/inter) and are distributed under the
+SIL Open Font License included alongside the font files.
+
+## Homepage images
+
+The original JPEGs in `public/images/` are retained as source images. The
+homepage uses compressed, width-suffixed JPEGs through `srcset` and `sizes`;
+the browser selects a file based on the layout and screen density. When
+replacing an image, export each of its existing widths from the new original
+and update the homepage's `srcset` and `sizes` if the widths or layout change.
+
 ## Contact form submissions
 
 The contact form posts to `POST /contact`. The server checks the fields and hands the submission to `sendToSupport()` in `server/support.js`.
