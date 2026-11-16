@@ -1,5 +1,6 @@
 const form = document.getElementById('contact-form');
 const statusEl = document.getElementById('form-status');
+const formLoadedAt = performance.now();
 
 form.addEventListener('submit', async (event) => {
   event.preventDefault();
@@ -10,6 +11,8 @@ form.addEventListener('submit', async (event) => {
   statusEl.className = 'form-status';
 
   const data = Object.fromEntries(new FormData(form));
+
+  data.formElapsedMs = performance.now() - formLoadedAt;
 
   try {
     const response = await fetch('/contact', {
